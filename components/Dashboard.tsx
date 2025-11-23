@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Plus, Search, Filter, MoreVertical, Check, Clock, Archive, User, Settings, LogOut, FolderOpen, Trash2, AlertTriangle, Github as GitHub, X } from 'lucide-react'
-import { Project, Resource } from '../src/types/index'
+import { Project, Resource, ProjectStatus, ProjectLink } from '../src/types/index'
 import { addProject, addResource, signOut, deleteProject, updateProjectStatus, deleteResource, updateProjectNotes } from '../src/app/actions'
 import { Button } from '../src/components/ui/button'
 import { Input } from '../src/components/ui/input'
@@ -13,29 +13,6 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from '../src/components/ui/dropdown-menu'
-
-// Project status type
-type ProjectStatus = 'ongoing' | 'completed' | 'archived'
-
-// Project card interface
-interface ProjectCard {
-  id: string
-  name: string
-  description: string
-  status: ProjectStatus
-  notes?: string
-  updatedAt: string
-  links: ProjectLink[]
-}
-
-// Project link interface
-interface ProjectLink {
-  id: string
-  type: 'website' | 'github' | 'youtube' | 'instagram' | 'gitlab'
-  label: string
-  url: string
-  icon: any
-}
 
 // Status configuration
 const statusConfig = {
