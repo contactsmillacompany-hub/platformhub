@@ -146,9 +146,16 @@ export default function Dashboard() {
   // Handle project creation
   const handleCreateProject = async (projectData: { name: string; description: string }) => {
     try {
-      const result = await addProject(projectData)
-      if (result.error) {
-        console.error('Error creating project:', result.error)
+      // Create a complete Project object with required fields
+      const newProject: Omit<Project, 'id' | 'updatedAt'> = {
+        name: projectData.name,
+        description: projectData.description,
+        status: 'ongoing',
+        links: []
+      }
+      const result = await addProject(newProject)
+      if (!result.success) {
+        console.error('Error creating project: Operation failed')
         return
       }
       
@@ -163,8 +170,8 @@ export default function Dashboard() {
   const handleDeleteProject = async (projectId: string) => {
     try {
       const result = await deleteProject(projectId)
-      if (result.error) {
-        console.error('Error deleting project:', result.error)
+      if (!result.success) {
+        console.error('Error deleting project: Operation failed')
         return
       }
       
