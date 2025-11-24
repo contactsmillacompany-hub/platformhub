@@ -2,17 +2,17 @@
 
 import { useState, useEffect } from 'react'
 import { Plus, Search, Filter, MoreVertical, Check, Clock, Archive, User, Settings, LogOut, FolderOpen, Trash2, AlertTriangle, Github as GitHub, X } from 'lucide-react'
-import { Project, Resource, ProjectStatus, ProjectLink, ProjectCard } from '../src/types/index'
-import { addProject, addResource, signOut, deleteProject, updateProjectStatus, deleteResource, updateProjectNotes } from '../src/app/actions'
-import { Button } from '../src/components/ui/button'
-import { Input } from '../src/components/ui/input'
+import { Project, Resource, ProjectStatus, ProjectLink, ProjectCard } from '@/src/types/index'
+import { addProject, addResource, signOut, deleteProject, updateProjectStatus, deleteResource, updateProjectNotes } from '@/src/app/actions'
+import { Button } from '@/src/components/ui/button'
+import { Input } from '@/src/components/ui/input'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
   DropdownMenuSeparator,
-} from '../src/components/ui/dropdown-menu'
+} from '@/src/components/ui/dropdown-menu'
 
 // Status configuration
 const statusConfig = {
@@ -69,12 +69,12 @@ export default function Dashboard() {
         } else {
           console.log('Dashboard: Projects fetched successfully:', projectsData.projects?.length || 0)
           // Convert to ProjectCard format
-          const projectCards = projectsData.projects.map(project => ({
+          const projectCards = projectsData.projects.map((project: any) => ({
             ...project,
             status: project.status || 'ongoing',
             updatedAt: project.updated_at ? new Date(project.updated_at).toLocaleString() : 'Unknown',
             description: project.description || 'No description available',
-            links: project.resources ? project.resources.map(resource => ({
+            links: project.resources ? project.resources.map((resource: any) => ({
               id: resource.id,
               type: resource.platform as any,
               label: resource.label,
@@ -269,7 +269,7 @@ export default function Dashboard() {
                 <Input
                   placeholder="Search projects..."
                   value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSearchQuery(e.target.value)}
                   className="pl-10"
                 />
               </div>
@@ -332,7 +332,7 @@ export default function Dashboard() {
                       </div>
                     </div>
                     <DropdownMenu>
-                      <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
+                      <DropdownMenuTrigger asChild onClick={(e: React.MouseEvent) => e.stopPropagation()}>
                         <Button variant="ghost" size="sm" className="h-8 w-8 p-0">
                           <MoreVertical className="w-4 h-4" />
                         </Button>
