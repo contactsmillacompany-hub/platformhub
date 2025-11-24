@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Plus, Search, Filter, MoreVertical, Check, Clock, Archive, User, Settings, LogOut, FolderOpen, Trash2, AlertTriangle, Github as GitHub, X } from 'lucide-react'
-import { Project, Resource, ProjectStatus, ProjectLink } from '../src/types/index'
+import { Project, Resource, ProjectStatus, ProjectLink, ProjectCard } from '../src/types/index'
 import { addProject, addResource, signOut, deleteProject, updateProjectStatus, deleteResource, updateProjectNotes } from '../src/app/actions'
 import { Button } from '../src/components/ui/button'
 import { Input } from '../src/components/ui/input'
