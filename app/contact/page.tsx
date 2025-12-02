@@ -1,27 +1,9 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { ArrowLeft, Mail, Send } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { toast } from "sonner";
+import { ArrowLeft, Mail, Send, MessageCircle } from "lucide-react";
+
+const EMAIL = "contact.smillacompany@gmail.com";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
-  const [sending, setSending] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setSending(true);
-    
-    // Simulate sending (replace with actual email service later)
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast.success("Message sent! We'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
-    setSending(false);
-  };
-
   return (
     <div className="min-h-screen bg-white dark:bg-zinc-950">
       <div className="max-w-2xl mx-auto px-4 py-16">
@@ -43,53 +25,44 @@ export default function Contact() {
           </div>
         </div>
         
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div>
-            <label className="block text-sm font-medium mb-2">Name</label>
-            <input
-              type="text"
-              required
-              className="w-full h-11 px-4 border border-zinc-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 dark:bg-zinc-900"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium mb-2">Email</label>
-            <input
-              type="email"
-              required
-              className="w-full h-11 px-4 border border-zinc-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 dark:bg-zinc-900"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-            />
-          </div>
-          
-          <div>
-            <label className="block text-sm font-medium mb-2">Message</label>
-            <textarea
-              required
-              rows={5}
-              className="w-full px-4 py-3 border border-zinc-200 dark:border-zinc-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-violet-500 dark:bg-zinc-900 resize-none"
-              value={formData.message}
-              onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            />
-          </div>
-          
-          <Button 
-            type="submit" 
-            disabled={sending}
-            className="w-full h-11 bg-gradient-to-r from-violet-600 to-blue-600 hover:from-violet-700 hover:to-blue-700"
+        <div className="space-y-6">
+          {/* Email Card */}
+          <a 
+            href={`mailto:${EMAIL}?subject=PlatformHub Inquiry`}
+            className="block p-6 bg-gradient-to-br from-violet-50 to-blue-50 dark:from-violet-950/30 dark:to-blue-950/30 rounded-xl border border-violet-100 dark:border-violet-900/50 hover:border-violet-300 dark:hover:border-violet-700 transition-all group"
           >
-            {sending ? "Sending..." : (
-              <>
-                <Send className="h-4 w-4 mr-2" />
-                Send Message
-              </>
-            )}
-          </Button>
-        </form>
+            <div className="flex items-center gap-4">
+              <div className="h-12 w-12 rounded-xl bg-gradient-to-br from-violet-500 to-blue-500 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <Send className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <h3 className="font-semibold text-lg mb-1">Send us an email</h3>
+                <p className="text-violet-600 dark:text-violet-400">{EMAIL}</p>
+              </div>
+            </div>
+          </a>
+          
+          {/* Info */}
+          <div className="p-6 bg-zinc-50 dark:bg-zinc-900/50 rounded-xl border border-zinc-100 dark:border-zinc-800">
+            <div className="flex items-start gap-4">
+              <div className="h-10 w-10 rounded-lg bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center flex-shrink-0">
+                <MessageCircle className="h-5 w-5 text-zinc-500" />
+              </div>
+              <div>
+                <h3 className="font-semibold mb-2">What to include</h3>
+                <ul className="text-sm text-zinc-600 dark:text-zinc-400 space-y-1">
+                  <li>• Your name and how we can help</li>
+                  <li>• Any relevant details about your inquiry</li>
+                  <li>• Screenshots if reporting an issue</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          
+          <p className="text-sm text-zinc-500 text-center">
+            We typically respond within 24-48 hours.
+          </p>
+        </div>
       </div>
     </div>
   );
