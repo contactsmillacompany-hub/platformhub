@@ -16,15 +16,25 @@ let projects: Project[] = [
     id: "p1",
     title: "Personal Portfolio",
     description: "Website and social accounts",
-    status: "active",
+    status: "ongoing",
     createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   },
   {
     id: "p2",
     title: "Mobile App",
     description: "App infra and releases",
-    status: "paused",
+    status: "completed",
     createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  },
+  {
+    id: "p3",
+    title: "E-commerce Platform",
+    description: "Online store and payment integration",
+    status: "ongoing",
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   },
 ];
 
@@ -56,8 +66,9 @@ export const addProject = (data: Pick<Project, "title" | "description">) => {
     id: Math.random().toString(36).slice(2, 9),
     title: data.title,
     description: data.description,
-    status: "active",
+    status: "ongoing",
     createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   };
   projects = [p, ...projects];
   return p;
