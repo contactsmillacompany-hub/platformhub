@@ -224,10 +224,26 @@ export default function HomePage() {
             <div>
               <h4 className="font-medium text-zinc-900 dark:text-zinc-100 mb-4">Support</h4>
               <ul className="space-y-3">
-                <li className="text-sm text-zinc-500 dark:text-zinc-400">Documentation</li>
-                <li className="text-sm text-zinc-500 dark:text-zinc-400">Help Center</li>
-                <li className="text-sm text-zinc-500 dark:text-zinc-400">Contact Us</li>
-                <li className="text-sm text-zinc-500 dark:text-zinc-400">Privacy Policy</li>
+                <li>
+                  <Link href="/docs" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+                    Documentation
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/help" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+                    Help Center
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+                    Contact Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/privacy" className="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors">
+                    Privacy Policy
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
@@ -238,14 +254,14 @@ export default function HomePage() {
               © {new Date().getFullYear()} PlatformHub. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
-              <Link href="#" className="text-sm text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
-                Terms
+              <Link href="/docs" className="text-sm text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+                Docs
               </Link>
-              <Link href="#" className="text-sm text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+              <Link href="/privacy" className="text-sm text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
                 Privacy
               </Link>
-              <Link href="#" className="text-sm text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
-                Cookies
+              <Link href="/contact" className="text-sm text-zinc-400 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors">
+                Contact
               </Link>
             </div>
           </div>
